@@ -63,8 +63,7 @@ export default function AddCustomer()
         }).catch((e)=>
         {
             console.log(e);
-        })
-      
+        })    
     }
 
     return(
@@ -84,8 +83,7 @@ export default function AddCustomer()
             Account_Number:<input type="text" id="Account_Number" value={Post.Account_Number} onChange={handleData}/><br/>
             Account_Type:<input type="text" id="Account_Type" value={Post.Account_Type} onChange={handleData}/><br/>
             loanDetailsId:<input type="text" id="loanDetailsId" value={Post.loanDetailsId} onChange={handleData}/><br/>
-            bankId:<input type="text" id="bankId" value={Post.bankId} onChange={handleData}/><br/>
-            
+            bankId:<input type="text" id="bankId" value={Post.bankId} onChange={handleData}/><br/>           
             <input type="submit" value="submit"  onClick={handleSubmit}/>  
                
         </div>

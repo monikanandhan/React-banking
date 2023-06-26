@@ -7,16 +7,26 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Link
+  Link,
+  useParams
 } from 'react-router-dom';
 
 export default function GetCustomer()
 {
     const baseURL="https://localhost:7142/api/Customer/Get-Customer-Details";
 
-    const [post,setPost]=useState(null);
+    const [post,setPost]=useState(null); 
 
-    
+    //get Customer BY id
+     const {Account_number}=useParams()
+
+    const handleClick = (Account_number) => {
+      axios.get(`https://localhost:7142/api/Customer/Get-Customer-Details-By-Account-Number-First-Name-Aadhar?Account_number=${Account_number}`
+      ).then((res) => {
+        setPost(res.data);
+      });
+     
+  };
 
     React.useEffect(() => {
         axios.get(baseURL).then((response) => {
@@ -25,8 +35,6 @@ export default function GetCustomer()
             console.log(e);
         });
       }, []);
-
-      
 
       if (!post) return null;
     return(
@@ -72,13 +80,13 @@ export default function GetCustomer()
     <td>{dataObj.pincode}</td>
      <td>{dataObj.account_Number}</td>
       <td>{dataObj.account_Type}</td>
-      <Link to="/UpdateCustomer">
-      <td><button type="button" id="updateButton"  >Update</button></td>
-      </Link>
      
-  </tr>
-</table>
+   <td> <button type="submit" key={dataObj.account_Number} onClick={() => handleClick(dataObj.account_Number)}>
+      Update
+    </button></td>
    
+  </tr>
+</table>  
             );
         })}
     

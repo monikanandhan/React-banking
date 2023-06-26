@@ -1,10 +1,13 @@
 import React,{useState} from "react";
 import axios from "axios";
+import { useParams } from "react-router-dom";
 
 
 export default function UpdateCustomer()
-{
+{ 
+
     
+
     const [Post,setpost]=useState({
         First_Name:'',
         Last_Name:'',
@@ -20,16 +23,27 @@ export default function UpdateCustomer()
         pincode:''
        })
 
+       const baseURL="https://localhost:7142/api/Customer/Get-Customer-Details";
+       const [post,setPost]=useState(null); 
+
+      React.useEffect(() => {
+        axios.get(baseURL).then((response) => {
+          setPost(response.data);
+        }).catch(e => {
+            console.log(e);
+        });
+      }, []);
+
         const handleData=(e)=>
         {
             setpost({...Post,[e.target.id]:e.target.value})
         }
     
-        const handleSubmit=(e,Account_Number)=>
+        const handleSubmit=(e)=>
         {
             e.preventDefault();
            
-            axios.put("https://localhost:7142/api/Customer/Update-Customer-Details-By-Account_Number/${Account_Number}",JSON.stringify({
+            axios.put(`https://localhost:7142/api/Customer/Update-Customer-Details-By-Account_Number/12345?Account_Number=12345`,JSON.stringify({
                 First_Name:Post.First_Name,
                 Last_Name:Post.Last_Name,
                 DateOfBirth:Post.DateOfBirth,
@@ -68,9 +82,6 @@ export default function UpdateCustomer()
             state :<input type="text" id="state" value={Post.state} onChange={handleData}/><br/>
             Country:<input type="text" id="Country" value={Post.Country} onChange={handleData}/><br/>
             pincode:<input type="text" id="pincode" value={Post.pincode} onChange={handleData}/><br/>
-            
-            
-            
             <input type="submit" value="submit"  onClick={handleSubmit}/>  
         </div>
     );
