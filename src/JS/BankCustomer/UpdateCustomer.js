@@ -1,14 +1,11 @@
 import React,{useState} from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
-
 
 export default function UpdateCustomer()
 { 
 
-    
-
     const [Post,setpost]=useState({
+        Account_Number:'',
         First_Name:'',
         Last_Name:'',
         DateOfBirth:'',
@@ -23,27 +20,16 @@ export default function UpdateCustomer()
         pincode:''
        })
 
-       const baseURL="https://localhost:7142/api/Customer/Get-Customer-Details";
-       const [post,setPost]=useState(null); 
-
-      React.useEffect(() => {
-        axios.get(baseURL).then((response) => {
-          setPost(response.data);
-        }).catch(e => {
-            console.log(e);
-        });
-      }, []);
-
-        const handleData=(e)=>
+       
+        const handleData=(e,Account_number)=>
         {
             setpost({...Post,[e.target.id]:e.target.value})
         }
     
         const handleSubmit=(e)=>
         {
-            e.preventDefault();
-           
-            axios.put(`https://localhost:7142/api/Customer/Update-Customer-Details-By-Account_Number/12345?Account_Number=12345`,JSON.stringify({
+            e.preventDefault();          
+            axios.put(`https://localhost:7142/api/Customer/Update-Customer-Details-By-Account_Number/${Post.Account_Number}?Account_Number=${Post.Account_Number}`,JSON.stringify({
                 First_Name:Post.First_Name,
                 Last_Name:Post.Last_Name,
                 DateOfBirth:Post.DateOfBirth,
@@ -57,11 +43,10 @@ export default function UpdateCustomer()
                 Country:Post.Country,
                 pincode:Post.pincode                             
             }),
-                {headers:{'Content-type':'application/json'}}).then((response) => {
-                    alert("Your Account Number is :"+response.data);
+                {headers:{'Content-type':'application/json'}}).then((response) => {   
                 alert("Account updated successfully");
-                window.location.reload();
-              
+                window.location.href='/EmployeeProfile';
+             
             }).catch((e)=>
             {
                 console.log(e);
@@ -70,6 +55,7 @@ export default function UpdateCustomer()
         } 
     return(
         <div>
+            Account_Number:<input type="text" id="Account_Number" value={Post.Account_Number} onChange={handleData}/><br/>
              First_Name:<input type="text" id="First_Name" value={Post.First_Name} onChange={handleData}/><br/>
             Last_Name:<input type="text" id="Last_Name" value={Post.Last_Name} onChange={handleData}/><br/>
             DateOfBirth:<input type="datetime-local" value={Post.DateOfBirth} id="DateOfBirth" onChange={handleData}/><br/>

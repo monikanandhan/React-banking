@@ -16,6 +16,7 @@ import Home from "./Home";
 
 import AddCustomer from "./BankCustomer/AddCustomer";
 import UpdateCustomer from "./BankCustomer/UpdateCustomer";
+import DeleteCustomer from "./BankCustomer/DeleteCustomer";
 
 
 class App extends React.Component
@@ -36,6 +37,8 @@ class App extends React.Component
           <Route exact path="/GetCustomer" element={<GetCustomer/>}/>
           <Route exact path="/AddCustomer" element={<AddCustomer/>}/>
           <Route exact path="/UpdateCustomer" element={<UpdateCustomer/>}/>
+          <Route exact path="/DeleteCustomer" element={<DeleteCustomer/>}/>
+          
           
         </Routes>
       </div>

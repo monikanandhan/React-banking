@@ -10,6 +10,7 @@ import 'materialize-css/dist/css/materialize.min.css';
 
 export default function EmployeeProfile()
 {
+ 
     return(
         <div class="col s12 m4 l4">
   <h3>Dashboard</h3>
@@ -22,6 +23,9 @@ export default function EmployeeProfile()
               </li>
               <li>
               <Link to="/UpdateCustomer"> <div class="collapsible-header"><i class="material-icons"></i>UpdateCustomer</div></Link>
+              </li>
+              <li>
+              <Link to="/DeleteCustomer"> <div class="collapsible-header"><i class="material-icons"></i>DeleteCustomer</div></Link>
               </li>
               
             </ul>

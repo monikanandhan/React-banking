@@ -11,7 +11,13 @@ export default function Home()
 {
 return(
     <div>
-<AddCustomer/>
+<ul>
+     <li><Link to="/CustomerLogin">Customer portal</Link></li>
+     <li><Link to="/Signup">Signup</Link></li>
+      <li><Link to="/EmployeeLogin">Employee portal</Link></li>
+         
+</ul>
+
 </div>
 );
 }

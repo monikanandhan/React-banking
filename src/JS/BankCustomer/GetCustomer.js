@@ -80,11 +80,16 @@ export default function GetCustomer()
     <td>{dataObj.pincode}</td>
      <td>{dataObj.account_Number}</td>
       <td>{dataObj.account_Type}</td>
-     
-   <td> <button type="submit" key={dataObj.account_Number} onClick={() => handleClick(dataObj.account_Number)}>
+  <Link to="/UpdateCustomer">
+    <td> <button type="submit" key={dataObj.account_Number} onClick={() => handleClick(dataObj.account_Number)}>
       Update
     </button></td>
-   
+    </Link>
+    <Link to="/DeleteCustomer">
+    <td> <button type="submit" key={dataObj.account_Number} onClick={() => handleClick(dataObj.account_Number)}>
+      Delete
+    </button></td>
+    </Link>
   </tr>
 </table>  
             );
