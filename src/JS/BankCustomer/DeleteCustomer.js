@@ -3,7 +3,6 @@ import React,{useState} from "react";
 
 export default function DeleteCustomer() 
 {
-
     const [Post,setpost]=useState({
         Account_Number:''
        })

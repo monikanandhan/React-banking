@@ -18,7 +18,7 @@ export default function EmployeeLogin() {
   {
     if((EmployeeID.length&&Password.length)==0)
     {
-      alert('Invalid Form, EMployee ID and password can not be empty')
+      alert('Invalid Form, Employee ID and password can not be empty')
       return window.location.reload(true);
     }
   }

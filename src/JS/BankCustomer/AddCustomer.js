@@ -1,8 +1,6 @@
 import React,{useState} from "react";
 import axios from "axios";
 
-
-
 export default function AddCustomer()
 {
    const [Post,setpost]=useState({
@@ -56,7 +54,7 @@ export default function AddCustomer()
             bankId:[Post.bankId]
         }),
             {headers:{'Content-type':'application/json'}}).then((response) => {
-                alert("Your Account Number is :"+response.data);
+                alert("Your Customer ID is :"+response.data);
             alert("Account created successfully");
             window.location.reload();
           
@@ -65,7 +63,6 @@ export default function AddCustomer()
             console.log(e);
         })    
     }
-
     return(
         <div>
             First_Name:<input type="text" id="First_Name" value={Post.First_Name} onChange={handleData}/><br/>
@@ -80,7 +77,7 @@ export default function AddCustomer()
             state :<input type="text" id="state" value={Post.state} onChange={handleData}/><br/>
             Country:<input type="text" id="Country" value={Post.Country} onChange={handleData}/><br/>
             pincode:<input type="text" id="pincode" value={Post.pincode} onChange={handleData}/><br/>
-            Account_Number:<input type="text" id="Account_Number" value={Post.Account_Number} onChange={handleData}/><br/>
+            Account_Number:<input type="text" id="Account_Number" value={Post.Account_Number} onChange={handleData}/><br/>          
             Account_Type:<input type="text" id="Account_Type" value={Post.Account_Type} onChange={handleData}/><br/>
             loanDetailsId:<input type="text" id="loanDetailsId" value={Post.loanDetailsId} onChange={handleData}/><br/>
             bankId:<input type="text" id="bankId" value={Post.bankId} onChange={handleData}/><br/>           
