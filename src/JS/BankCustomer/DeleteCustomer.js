@@ -1,5 +1,7 @@
 import axios from "axios";
 import React,{useState} from "react";
+import EmployeeProfile from "../Employee/EmployeeProfile";
+import './Customer.css'
 
 export default function DeleteCustomer() 
 {
@@ -11,6 +13,13 @@ export default function DeleteCustomer()
        {
            setpost({...Post,[e.target.id]:e.target.value})
        }
+
+       const handleCancel = () => {
+        setpost({
+            Account_Number:'',
+});
+  
+}
 
     const handleSubmit=(e)=>
     {
@@ -25,9 +34,20 @@ export default function DeleteCustomer()
         })
     }
 
-    return(<div>
+    return(
+        <div id="id1">
+        <div id="id2">
+        <EmployeeProfile/>
+        </div>
+        <div id="id3">
+        <h4 class="center ">Delete Customer Details</h4>
+        <br/>
+            <br/>
     Account_Number:<input type="text" id="Account_Number" value={Post.Account_Number} onChange={handleData}/><br/>
-    <button type="button" onClick={handleSubmit}>Delete</button>
+    <button type="button"  class="waves-effect waves-light btn" onClick={handleSubmit}>Delete</button>
+    <button type="submit"   class="waves-effect waves-light btn red lighten-1"  style={{marginLeft:680}} onClick={handleCancel} value="Cancel" > cancel</button> 
+
+    </div>
     </div>
     );
 

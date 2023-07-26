@@ -1,5 +1,7 @@
-import React,{useState} from "react";
+import React,{useEffect, useState} from "react";
 import axios from "axios";
+import EmployeeProfile from "../Employee/EmployeeProfile";
+import './Customer.css'
 
 export default function UpdateCustomer()
 { 
@@ -20,11 +22,35 @@ export default function UpdateCustomer()
         pincode:''
        })
 
-       
-        const handleData=(e,Account_number)=>
+        const handleData=(e)=>
         {
             setpost({...Post,[e.target.id]:e.target.value})
         }
+
+        const handleCancel = () => {
+       
+            setpost({
+                
+                First_Name:'',
+                Last_Name:'',
+                DateOfBirth:'',
+                Mobile_Number:'',
+                Email:'',
+                Aadhar:'',
+                Address1:'',
+                Address2:'',
+                city:'',
+                state:'',
+                Country:'',
+                pincode:'',
+                Account_Number:'',
+                Account_Type:'',
+                loanDetailsId:[],
+                bankId:[]
+            
+    });
+      
+    }
     
         const handleSubmit=(e)=>
         {
@@ -54,9 +80,16 @@ export default function UpdateCustomer()
           
         } 
     return(
-        <div>
+        <div id="id1">
+        <div id="id2">
+        <EmployeeProfile/>
+        </div>
+        <div id="id3">
+        <h4 class="center ">Update Customer Details</h4>
+        <br/>
+            <br/>
             Account_Number:<input type="text" id="Account_Number" value={Post.Account_Number} onChange={handleData}/><br/>
-             First_Name:<input type="text" id="First_Name" value={Post.First_Name} onChange={handleData}/><br/>
+            First_Name:<input type="text" id="First_Name" value={Post.First_Name} onChange={handleData}/><br/>
             Last_Name:<input type="text" id="Last_Name" value={Post.Last_Name} onChange={handleData}/><br/>
             DateOfBirth:<input type="datetime-local" value={Post.DateOfBirth} id="DateOfBirth" onChange={handleData}/><br/>
             Mobile_Number:<input type="number" value={Post.Mobile_Number} id="Mobile_Number" onChange={handleData}/><br/>
@@ -68,7 +101,10 @@ export default function UpdateCustomer()
             state :<input type="text" id="state" value={Post.state} onChange={handleData}/><br/>
             Country:<input type="text" id="Country" value={Post.Country} onChange={handleData}/><br/>
             pincode:<input type="text" id="pincode" value={Post.pincode} onChange={handleData}/><br/>
-            <input type="submit" value="submit"  onClick={handleSubmit}/>  
+            <button type="submit" class="waves-effect waves-light btn" value="submit"  onClick={handleSubmit}>  Update</button>
+            <button type="submit"   class="waves-effect waves-light btn red lighten-1"  style={{marginLeft:680}} onClick={handleCancel} value="Cancel" > cancel</button> 
+
+        </div>
         </div>
     );
  }

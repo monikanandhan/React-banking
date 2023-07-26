@@ -10,6 +10,7 @@ import 'materialize-css/dist/css/materialize.min.css';
 export default function CustomerProfile()
 {
     return(
+      
         <div class="col s12 m4 l4">
   <h3>Dashboard</h3>
         <ul class="collapsible">
@@ -25,6 +26,8 @@ export default function CustomerProfile()
               
             </ul>
           </div>
+          
+          
 
     );
 }

@@ -7,6 +7,7 @@ import {
     Link,
     redirect
   } from 'react-router-dom';
+  import image from "./imagec1.jpg";
 
   export default function CustomerLogin()
   {
@@ -27,14 +28,14 @@ import {
    
     return(
      
-      <div style={{marginLeft:90,marginRight:90}}  class="teal lighten-2"> 
-      <div style={{marginTop:50}} class="container" >
+      <div style={{backgroundImage: `url(${image})`,height:640,backgroundRepeat:"no-repeat",marginTop:20,marginLeft:20}}> 
+      <div  class="container" >
      <div class="row">
        <div class="col s12 m6 offset-m3">
        
        
-     <div class="card-panel z-depth-5">
-     <h4 class="center"> Customer Portal</h4>	 
+     <div class="card-panel z-depth-5 " style={{marginTop:40}} >
+     <h4 class="center"> </h4>	 
  <div class="row">
    <form class="col s12 m12">
      <div class="row">
@@ -56,7 +57,7 @@ import {
        </div>
        
          <div class="input-field col s12 m12">
-         <i class="fa fa-unlock-alt prefix"></i>
+         <i class="small material-icons prefix">lock</i>
          <input id={Password} type="password" class="validate" placeholder="Password"  onChange={(e) => setPassword(e.target.value)} />
          
        </div>

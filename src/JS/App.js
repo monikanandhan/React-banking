@@ -13,10 +13,11 @@ import EmployeeLogin from "./Employee/EmployeeLogin";
 import CustomerLogin from "./Customer/CustomerLogin";
 import GetCustomer from "./BankCustomer/GetCustomer";
 import Home from "./Home";
-
 import AddCustomer from "./BankCustomer/AddCustomer";
 import UpdateCustomer from "./BankCustomer/UpdateCustomer";
 import DeleteCustomer from "./BankCustomer/DeleteCustomer";
+import FirstPage from "../FirstPage";
+
 
 
 class App extends React.Component
@@ -28,7 +29,8 @@ class App extends React.Component
     <Router>
       <div>      
         <Routes>
-        <Route exact path="/" element={<Home/>}/>
+        <Route exact path="/" element={<FirstPage/>}/>
+        <Route path='/login' element={<FirstPage />} />
           <Route exact path="/CustomerLogin" element={<CustomerLogin/>}/>
           <Route exact path="/EmployeeLogin" element={<EmployeeLogin/>}/>
           <Route exact path="/Signup" element={<Signup/>}/>

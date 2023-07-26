@@ -5,7 +5,7 @@ import {
     Route,
     Link
   } from 'react-router-dom';
-import AddCustomer from "./BankCustomer/AddCustomer";
+
 
 export default function Home()
 {

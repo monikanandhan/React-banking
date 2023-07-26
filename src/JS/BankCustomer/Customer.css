@@ -1,0 +1,43 @@
+#id1
+{
+display:inline-flex;
+
+
+}
+
+#id2
+{
+  width: 300px;
+ 
+}
+#id3
+{
+  margin-top: 100px;
+ width:100%;
+  
+}
+#alert1
+{
+  color: red;
+}
+#label1
+{
+ font-size: 15px;
+ color: black;
+ margin-right: 5px;
+}
+.modal {
+  max-height: 90%;
+}
+
+.modal-form-row {
+  margin-bottom: 0px;
+}
+#table1{
+  
+  
+  overflow: auto;
+}
+span{
+  color:red;
+}

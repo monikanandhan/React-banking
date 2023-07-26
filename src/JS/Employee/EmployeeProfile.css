@@ -1,0 +1,143 @@
+#dashboard
+{
+    font-size: larger;
+    font-weight: bold;
+    margin-left: 15px;
+
+    padding-bottom: 10px;
+    color: blanchedalmond;
+   
+
+}
+#sidenav1
+{
+    width:350px;
+    background-color:#26a69a;
+   
+ 
+   
+   
+   
+}
+.collapsible-header
+{
+    background-color:#26a69a;
+    color: blanchedalmond;
+    font-weight: bolder;
+
+  
+}
+
+.collapsible-header :hover
+{
+   color:#26a69a;
+}
+
+.container1
+{
+    
+    width:80vw;
+ 
+}
+ 
+#div1
+{
+    display: flex;
+    flex-direction: row;
+   
+}
+#nav1{
+    height: 100px;
+   width:85vw;
+    background-color:#26a69a;
+    
+}
+.collapsible-body
+{
+    color: blanchedalmond;
+}
+#li1
+{
+    color: blanchedalmond;
+    font-size: larger;
+    font-weight: bold;
+    margin-top: 10px;
+}
+.dropdown-trigger
+{
+    color: blanchedalmond;
+    font-size: larger;
+    font-weight: bold;
+    margin-top: 20px;
+}
+.circle
+{
+    height: 40px;
+    width: 40px;
+}
+.dropdown-content
+{
+    margin-top: 200px;
+}
+#icon1
+{
+  display: flex;
+  flex-direction: row;
+}
+#icondashboard
+{
+    margin-top: 18px;
+    margin-left: 20px;
+    color: blanchedalmond;
+   
+}
+#iconcustomer
+{
+    margin-top: 10px;
+    margin-left: 20px;
+    color: blanchedalmond;
+}
+    
+#iconcibil
+{
+    margin-top: 13px;
+    margin-left: 25px;
+    color: blanchedalmond;
+   
+}
+#iconbank
+{
+    margin-top: 13px;
+    margin-left: 25px;
+    color: blanchedalmond;
+}
+#iconloandetails
+{
+    margin-top: 13px;
+    margin-left: 25px;
+    color: blanchedalmond;
+   
+}
+#iconloan
+{
+    margin-top: 13px;
+    margin-left: 25px;
+    color: blanchedalmond;
+}
+#banklogo
+{
+    height:80px;
+    width:100px;
+    margin-left: 60px;
+    margin-top: 10px;
+}
+#nav-mobile
+{
+    margin-left: 700px;
+}
+p{
+    color: blanchedalmond;
+    
+}
+
+
