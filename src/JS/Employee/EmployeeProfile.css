@@ -1,143 +1,132 @@
-#dashboard
-{
+#dashboard {
     font-size: larger;
     font-weight: bold;
     margin-left: 15px;
-
     padding-bottom: 10px;
     color: blanchedalmond;
-   
+}
+
+#sidenav1 {
+    width: 280px;
+    height: 640px;
+    background-color: #26a69a;
 
 }
-#sidenav1
-{
-    width:350px;
-    background-color:#26a69a;
-   
- 
-   
-   
-   
-}
-.collapsible-header
-{
-    background-color:#26a69a;
+
+.collapsible-header {
+    background-color: #26a69a;
     color: blanchedalmond;
     font-weight: bolder;
-
-  
 }
 
-.collapsible-header :hover
-{
-   color:#26a69a;
+.collapsible-header:hover {
+    background-color: #2a796f;
+
 }
 
-.container1
-{
-    
-    width:80vw;
- 
+
+.container1 {
+
+    width: 80vw;
 }
- 
-#div1
-{
+
+#div1 {
     display: flex;
     flex-direction: row;
-   
+
+
 }
-#nav1{
+
+#nav1 {
     height: 100px;
-   width:85vw;
-    background-color:#26a69a;
-    
+    width: 79.5vw;
+    background-color: #26a69a;
+
+
 }
-.collapsible-body
-{
+
+.collapsible-body {
     color: blanchedalmond;
 }
-#li1
-{
+
+#li1 {
     color: blanchedalmond;
     font-size: larger;
     font-weight: bold;
     margin-top: 10px;
 }
-.dropdown-trigger
-{
+
+.dropdown-trigger {
     color: blanchedalmond;
     font-size: larger;
     font-weight: bold;
     margin-top: 20px;
 }
-.circle
-{
-    height: 40px;
-    width: 40px;
+
+#icon1 {
+    display: flex;
+    flex-direction: row;
 }
-.dropdown-content
-{
-    margin-top: 200px;
-}
-#icon1
-{
-  display: flex;
-  flex-direction: row;
-}
-#icondashboard
-{
+
+#icondashboard {
     margin-top: 18px;
     margin-left: 20px;
     color: blanchedalmond;
-   
+
 }
-#iconcustomer
-{
-    margin-top: 10px;
-    margin-left: 20px;
-    color: blanchedalmond;
+
+#profile {
+    font-size: 40px;
+    margin-top: -7px;
+    margin-left: -95px;
 }
-    
-#iconcibil
-{
-    margin-top: 13px;
-    margin-left: 25px;
-    color: blanchedalmond;
-   
-}
-#iconbank
-{
-    margin-top: 13px;
-    margin-left: 25px;
-    color: blanchedalmond;
-}
-#iconloandetails
-{
-    margin-top: 13px;
-    margin-left: 25px;
-    color: blanchedalmond;
-   
-}
-#iconloan
-{
-    margin-top: 13px;
-    margin-left: 25px;
-    color: blanchedalmond;
-}
-#banklogo
-{
-    height:80px;
-    width:100px;
+
+#banklogo {
+    height: 80px;
+    width: 100px;
     margin-left: 60px;
     margin-top: 10px;
 }
-#nav-mobile
-{
-    margin-left: 700px;
+
+#nav-mobile {
+    margin-left: 600px;
+
 }
-p{
+
+#icons {
+    margin-top: -10px;
+}
+
+#toplist:hover {
+    background-color: transparent;
+
+}
+
+#subMenulist {
     color: blanchedalmond;
-    
+    font-size: medium;
+    font-weight: bold;
+
 }
 
+#submenuicon {
+    font-size: 15px;
+    margin-right: 10px;
+}
 
+#submenudiv:hover {
+    background-color: #2a796f;
+    height: 50px;
+    width: 150px;
+    padding-left: 15px;
+    padding-top: 10px;
+    box-shadow: none;
+
+
+}
+
+#subMenudiv {
+    height: 60px;
+    width: 200px;
+
+}

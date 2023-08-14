@@ -1,6 +1,6 @@
 nav ul a,
 nav .brand-logo {
-  color:bisque;
+  color: bisque;
   margin-top: 10px;
 }
 
@@ -16,17 +16,19 @@ p {
   min-height: 380px;
   line-height: 0;
   height: auto;
-  color: rgba(255,255,255,.9);
+  color: rgba(255, 255, 255, .9);
 }
-  .parallax-container .section {
-    width: 100%;
-  }
+
+.parallax-container .section {
+  width: 100%;
+}
 
 @media only screen and (max-width : 992px) {
   .parallax-container .section {
     position: absolute;
     top: 20%;
   }
+
   #index-banner .section {
     top: 10%;
   }
@@ -47,64 +49,65 @@ footer.page-footer {
   margin: 0;
 }
 
- .parallax img 
- {  
- 	 background-repeat: no-repeat;
- 	 background-size: cover;
- }
- .parallax-container
- {
- 	color: black;
- }
- @media only screen and (max-width : 600px) {
-  .parallax-container
- {
- 	color: white;
- }
+.parallax img {
+  background-repeat: no-repeat;
+  background-size: cover;
 }
- nav a.button-collapse
- {
- 	color:black;
- }
- .purple.lighten-1 {
-  background-color: #26a69a  !important;
+
+.parallax-container {
+  color: black;
 }
+
+@media only screen and (max-width : 600px) {
+  .parallax-container {
+    color: white;
+  }
+}
+
+nav a.button-collapse {
+  color: black;
+}
+
+.purple.lighten-1 {
+  background-color: #26a69a !important;
+}
+
 .teal-text.text-lighten-2 {
-  color:#26a69a !important;
-}
-.share-buttons{
-	list-style: none;
+  color: #26a69a !important;
 }
 
-.share-buttons li{
-	display: inline;
+.share-buttons {
+  list-style: none;
 }
-nav
-{
-	overflow: visible;
+
+.share-buttons li {
+  display: inline;
 }
+
+nav {
+  overflow: visible;
+}
+
 nav li a {
-    -webkit-transition: background .3s ease-in-out;
-    -moz-transition: background .3s ease-in-out;
-    transition: background .3s ease-in-out;
+  -webkit-transition: background .3s ease-in-out;
+  -moz-transition: background .3s ease-in-out;
+  transition: background .3s ease-in-out;
 }
 
-.head-link
-{
-  color:bisque;
+.head-link {
+  color: bisque;
   font-size: 23px;
   margin-top: 10px;
- 
+
 }
 
-#index-banner
-{
+#index-banner {
   padding-top: 100px;
-  background-size:cover;
-  
-  height:600px;
+  background-size: cover;
+
+  height: 600px;
 }
-nav
-{
-height:90px;
+
+nav {
+  height: 90px;
 }

@@ -1,240 +1,140 @@
-import React,{useEffect} from "react";
-
+import React, { useEffect, useState } from "react";
 import { BrowserRouter, Route, Link } from "react-router-dom";
 import 'materialize-css/dist/css/materialize.min.css';
-import  M from "materialize-css/dist/js/materialize.min.js";
+import M from "materialize-css/dist/js/materialize.min.js";
 import '../BankCustomer/Customer.css'
 import './EmployeeProfile.css';
-import image from './loginicon.jpg';
 import imagebank from './banklogo1.png';
-
 import { useNavigate } from 'react-router-dom';
+import axios from "axios";
+
+export default function EmployeeProfile() {
+
+  const [logoutMenu, setLogoutMenu] = useState([]);
+  const [menu, setMenu] = useState([]);
+  const [topMenu, setTopMenu] = useState([]);
+
+//TopMenu Endpoint
+  const handleTopMenu = () => {
+    axios.get("https://localhost:7142/api/TopMenu").then((response) => {
+      setTopMenu(response.data);
+    })
+  }
+
+  //Menu Endpoint
+  const handleMenu = () => {
+    axios.get("https://localhost:7142/api/SideMenu").then((response) => {
+      setMenu(response.data)
+      console.log(response.data);
+    })
+  }
+
+ //LogoutMenu Endpoint
+  const handleLogoutMenu = () => {
+    axios.get("https://localhost:7142/api/LogoutMenu").then((response) => {
+      setLogoutMenu(response.data);
+      console.log(response.data);
+    })
+  }
 
 
-
-
-export default function EmployeeProfile() 
-{
- 
   useEffect(() => {
-    
     M.AutoInit();
-  });
+    handleTopMenu();
+    handleMenu();
+    handleLogoutMenu();
+  }, [M.AutoInit()]);
 
-  const nav = useNavigate();
-
-    const logOut=() =>{         
-        localStorage.removeItem("jwt");
-        nav('/login');
-    }
-  
 
   
   return (
-
-
     <div>
-    <div id="div1">
+      <div id="div1">
+        <div id="sidenav1" >
+          <div >
+            <img src={imagebank} id="banklogo" />
+          </div>
+          {/*<ul id="slide-out" class="sidenav">*/}
+          <br />
+          <div id="icon1">
+            <div id="icondashboard"><i class="small material-icons">dashboard</i></div>
+            <div><h4 id="dashboard">Dashboard</h4></div>
+          </div>
+          <ul class="collapsible">
+            {menu.filter((datalink) => ((datalink.parentId == 0) && (datalink.menuStatus == "yes") && (datalink.menuURL == ""))).map((datalink, index) => (
+              <li key={index}>
+                <div class="collapsible-header"><i class="material-icons" id="icons">{datalink.menuIcon}</i>{datalink.menuTitle}</div>
+                <div class="collapsible-body">
+                  <ul class="collapsible">
+                    {menu.filter((menuitem) => ((menuitem.parentId == datalink.id) && (menuitem.menuStatus == "yes") && (menuitem.menuURL == ""))).map((menuitem, index) => (
+                      <li key={index}>
+                        <div class="collapsible-header"><i class="material-icons" id="icons">{menuitem.menuIcon}</i>{menuitem.menuTitle}</div>
+                        <div class="collapsible-body">
+                          {menu.filter((subMenuitem) => (subMenuitem.parentId == menuitem.id) && (subMenuitem.menuStatus == "yes") && (subMenuitem.menuURL !== "")).map((subMenuitem, index) => (
+                            <div id="submenudiv" key={index}>
+                              <ul>
+                                <Link to={`/${subMenuitem.menuURL}`}><li  id="subMenulist"> <div id="subMenudiv"><i class="material-icons" id="submenuicon">{subMenuitem.menuIcon}</i>{subMenuitem.menuTitle}</div></li> </Link>
+                              </ul>
+                            </div>
+                          ))}
+                        </div>
+                      </li>
+                    ))}
 
-<div id="sidenav1" > 
-<div>
-  <img src={imagebank} id="banklogo"/>
-</div>
-{/*<ul id="slide-out" class="sidenav">*/}
-<br/>
-<div id="icon1">
-<div id="icondashboard"><i class="small material-icons" >dashboard</i></div>
 
-<div><h4 id="dashboard">Dashboard</h4></div>
-</div>
-
-<ul class="collapsible" data-collapsible="expandable" id="collapsed_links">
-          
-          <li class="active">
-            <div id="icon1">
-         <div><i id="iconcustomer" class="small material-icons" >wc</i></div> 
-            <div class="collapsible-header">Customer</div>
-            </div>
-           <div class="collapsible-body">
-           <Link to="/AddCustomer"> <p>Add Customer</p></Link>
-           <Link to="/GetCustomer"><p>Get Customer</p></Link>
-           <Link to="/UpdateCustomer"><p>Update Customer</p></Link>
-           <Link to="/DeleteCustomer"><p>Delete Customer</p></Link>
-            </div>
-
-          </li>
-          <li class="active">
-            <div id="icon1">
-          <div id="iconbank"><i class="material-icons">account_balance</i></div>
-                <div class="collapsible-header">Bank</div>
+                    {menu.filter((menuitems) => ((menuitems.parentId == datalink.id) && (menuitems.menuStatus == "yes") && (menuitems.menuURL !== ""))).map((menuitems, index) => (
+                      <li key={index}>
+                        <Link to={`/${menuitems.menuURL}`}> <div class="collapsible-header"><i class="material-icons" id="icons">{menuitems.menuIcon}</i>{menuitems.menuTitle}</div></Link>
+                        <div class="collapsible-body">
+                          {menu.filter((subMenuitems) => (subMenuitems.parentId == menuitems.id) && (subMenuitems.menuStatus == "yes") && (subMenuitems.menuURL !== "")).map((subMenuitems, index) => (
+                            <div id="submenudiv" key={index}>
+                              <ul>
+                                <li  id="subMenulist"> <div id="subMenudiv"><i class="material-icons" id="submenuicon">{subMenuitems.menuIcon}</i>{subMenuitems.menuTitle}</div></li>
+                              </ul>
+                            </div>
+                          ))}
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-               <div class="collapsible-body">
-               <Link to="/AddCustomer"> <p>Add Bank</p></Link>
-               <Link to="/GetCustomer"><p>Get Bank</p></Link>
-               <Link to="/UpdateCustomer"><p>Update Bank</p></Link>
-               <Link to="/DeleteCustomer"><p>Delete Bank</p></Link>
-                </div>
-
               </li>
-              <li class="active">
-                <div id="icon1">
-
-               <div id="iconloandetails"><i class="material-icons"> account_balance_wallet</i></div>
-                <div class="collapsible-header">Customer Loan Details</div>
-                </div>
-               <div class="collapsible-body">
-               <Link to="/AddCustomer"> <p>Add Loan Details</p></Link>
-               <Link to="/GetCustomer"><p>Get Loan Details</p></Link>
-               <Link to="/UpdateCustomer"><p>Update Loan Details</p></Link>
-               <Link to="/DeleteCustomer"><p>Delete Loan Details</p></Link>
-                </div>
-
-              </li>
-
-              <li class="active">
-                <div id="icon1">
-                  <div id="iconloan"><i class="material-icons">monetization_on</i></div>
-                <div class="collapsible-header">Available Loan Details</div>
-                </div>
-               <div class="collapsible-body">
-               <Link to="/AddCustomer"> <p>Add Loan </p></Link>
-               <Link to="/GetCustomer"><p>Get Loan</p></Link>
-               <Link to="/UpdateCustomer"><p>Update Loan </p></Link>
-               <Link to="/DeleteCustomer"><p>Delete Loan </p></Link>
-                </div>
-
-              </li>
-
-              <li class="active">
-                <div id="icon1">
-              <div id="iconcibil"><i class="material-icons">insert_chart</i></div>
-                <div class="collapsible-header">Cibil</div>
-                </div>
-               <div class="collapsible-body">
-               <Link to="/AddCustomer"> <p>Add Cibil </p></Link>
-               <Link to="/GetCustomer"><p>Get Cibil</p></Link>
-               <Link to="/UpdateCustomer"><p>Update Cibil</p></Link>
-               <Link to="/DeleteCustomer"><p>Delete Cibil </p></Link>
-                </div>
-
-              </li>
-              
+            ))}
           </ul>
-     
-{/*</ul>*/}
+        </div>
 
-</div>
-<div className="container1">
 
-<ul id="dropdown1" class="dropdown-content">
-  <li><a href="#!">Profile</a></li>
-  <li><a href="#!">Event</a></li>
-  <li class="divider"></li>
-  <li><a  onClick={logOut}>Logout</a></li>
-</ul>
-<nav id="nav1">
-  <div class="nav-wrapper">
-    <a  class="brand-logo"></a>
-    <ul id="nav-mobile" >
-      <li ><a href="" id="li1">About Us</a></li>
-      <li ><a href="" id="li1">Contact Us </a></li>
-      <li><a href=""  id="li1">Email</a></li>
-      <li><a class="dropdown-trigger" href="#!" data-target="dropdown1"><a href="#user"><img class="circle" src={image}/></a><i class="material-icons right">arrow_drop_down</i></a></li>
-       
-    </ul>
-  </div>
-</nav>
+        {/*TopNav bar*/}
+        <div className="container1">
 
-</div>
-</div>
+          {/*Profile Popup*/}
+          <ul id="dropdown1" class="dropdown-content">
+            {logoutMenu.map((logoutitem) => (
+              <li key={logoutitem.id}><a href={logoutitem.logoutMenuURL}>{logoutitem.menuDescription}</a></li>
 
-</div>
- );
+            ))}
+          </ul>
+         {/*TopNav Menu*/}
+          <nav id="nav1">
+            <div class="nav-wrapper">
+              <a class="brand-logo"></a>
+              <ul id="nav-mobile" >
+                {topMenu.filter((menulist) => menulist.menuTitle !== null).map((menulist,index) => (
+                  <li key={index} id="toplist"><a href="" id="li1">{menulist.menuTitle}</a></li>
+                ))}
+                {topMenu.filter((menulists) => menulists.menuIcon !== null).map((menulists,index) => (
+                  <li key={index} id="toplist"><a class="dropdown-trigger" href="#!" data-target="dropdown1"><i class="material-icons" id="profile">{menulists.menuIcon}</i></a></li>
+                ))}
+              </ul>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </div>
+  );
 }
 
 
- {/* <div>
 
-    <div id="id1"> 
-<div class="col s12 m4 l4 ">
-  <h>Dashboard </h>
-        <ul class="collapsible" data-collapsible="expandable" id="collapsed_links">
-          
-              <li class="active">
-                <div class="collapsible-header"><i class="material-icons"></i>Customer</div>
-               <div class="collapsible-body">
-               <Link to="/AddCustomer"> <p>Add Customer</p></Link>
-               <Link to="/GetCustomer"><p>Get Customer</p></Link>
-               <Link to="/UpdateCustomer"><p>Update Customer</p></Link>
-               <Link to="/DeleteCustomer"><p>Delete Customer</p></Link>
-                </div>
-
-              </li>
-
-              <li class="active">
-                <div class="collapsible-header"><i class="material-icons"></i>Bank</div>
-               <div class="collapsible-body">
-               <Link to="/AddCustomer"> <p>Add Bank</p></Link>
-               <Link to="/GetCustomer"><p>Get Bank</p></Link>
-               <Link to="/UpdateCustomer"><p>Update Bank</p></Link>
-               <Link to="/DeleteCustomer"><p>Delete Bank</p></Link>
-                </div>
-
-              </li>
-              <li class="active">
-                <div class="collapsible-header"><i class="material-icons"></i>Customer Loan Details</div>
-               <div class="collapsible-body">
-               <Link to="/AddCustomer"> <p>Add Loan Details</p></Link>
-               <Link to="/GetCustomer"><p>Get Loan Details</p></Link>
-               <Link to="/UpdateCustomer"><p>Update Loan Details</p></Link>
-               <Link to="/DeleteCustomer"><p>Delete Loan Details</p></Link>
-                </div>
-
-              </li>
-
-              <li class="active">
-                <div class="collapsible-header"><i class="material-icons"></i>Available Loan Details</div>
-               <div class="collapsible-body">
-               <Link to="/AddCustomer"> <p>Add Loan </p></Link>
-               <Link to="/GetCustomer"><p>Get Loan</p></Link>
-               <Link to="/UpdateCustomer"><p>Update Loan </p></Link>
-               <Link to="/DeleteCustomer"><p>Delete Loan </p></Link>
-                </div>
-
-              </li>
-
-              <li class="active">
-                <div class="collapsible-header"><i class="material-icons"></i>Cibil</div>
-               <div class="collapsible-body">
-               <Link to="/AddCustomer"> <p>Add Cibil </p></Link>
-               <Link to="/GetCustomer"><p>Get Cibil</p></Link>
-               <Link to="/UpdateCustomer"><p>Update Cibil</p></Link>
-               <Link to="/DeleteCustomer"><p>Delete Cibil </p></Link>
-                </div>
-
-              </li>
-              
-              
-            </ul>
-            <div>
-
-            </div>
-          </div>
-
-      {/*<ul>
-      <li><Link to="/GetCustomer">GetCustomer</Link></li>
-      <li><Link to="/AddCustomer">AddCustomer</Link></li>
-      <li><Link to="/UpdateCustomer">UpdateCustomer</Link></li>
-      <li><Link to="/DeleteCustomer">DeleteCustomer</Link></li>
-     
-  </ul>
-
-
- 
-      
-      
-    </div>
-    </div>*/}
- 
 
 
